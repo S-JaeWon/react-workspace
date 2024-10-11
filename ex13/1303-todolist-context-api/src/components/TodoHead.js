@@ -5,6 +5,7 @@ import { useTodoState } from '../context/TodoContext';
 function TodoHead() {
     const todos = useTodoState();
     const undoneTasks = todos.filter(todo => !todo.done).length;
+    
     const today = new Date();
     const dateString = today.toLocaleDateString('ko-KR', {
         year: 'numeric',

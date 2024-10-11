@@ -1,7 +1,6 @@
 import './App.css';
 import TodoCreate from './TodoCreate';
 import TodoHead from './TodoHead';
-import TodoItem from './TodoItem';
 import TodoList from './TodoList';
 import TodoTemplate from './TodoTemplate';
 
@@ -12,7 +11,6 @@ function App() {
     <TodoTemplate>
       <TodoHead />
       <TodoList />
-      <TodoItem />
       <TodoCreate />
     </TodoTemplate>
    </>

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import "./TodoItem.css"
 
-function TodoItem({id, done, text}) {
+function TodoItem({ id, done, text }) {
     return (
         <div className="todo-item-block">
             <div className={`check-circle ${done ? "done" : ""}`}>
@@ -17,8 +17,8 @@ function TodoItem({id, done, text}) {
                     delete
                 </span>
             </div>
-        </div>
-    );
+        </div >
+    )
 }
 
-export default TodoItem;
+export default TodoItem
