@@ -1,12 +1,11 @@
 import React from 'react';
 import "../assets/css/TodoList.css"
 import TodoItem from './TodoItem';
-import { useTodoState } from '../context/TodoContext';
+import useTodoStore from '../hooks/useTodoStore';
 
-function TodoList(props) {
-
-    const todos = useTodoState();
-
+function TodoList() {
+    const {todos} = useTodoStore();
+    
     console.log(todos);
 
     return (

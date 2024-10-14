@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
 import "../assets/css/TodoCreate.css"
 import addIco from "../assets/svg/add.svg"
-import { useTodoDispatch, useTodoNextId } from '../context/TodoContext';
+import useTodoStore from '../hooks/useTodoStore';
 
 function TodoCreate() {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
 
-    const dispatch = useTodoDispatch();
-    const nextId = useTodoNextId();
+    const {createTodo} = useTodoStore();
 
     const onToggle = () => setOpen(!open);
     const onChange = (e) => {setValue(e.target.value)}
     const onSubmit = (e) => { /**form 태그에서는 onClick 대신 onSubmit 사용 */
       e.preventDefault(); /**from 태그는 랜더링 되면서 새로고침 되면 초기화 되기 때문에, 초기화 방지 해줌 */
-      dispatch({
-        type: "CREATE",
-        todo: {
-          id: nextId.current,
-          text: value,
-          done: false
-        }
-      });
-      setValue("");
-      nextId.current++;
+      createTodo(value)
+      setValue("")
     } 
 
     // console.log(value);
