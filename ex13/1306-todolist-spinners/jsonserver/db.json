@@ -3,26 +3,25 @@
     {
       "id": "1",
       "text": "할일1",
-      "done": true
+      "create_date": "2024-10-10",
+      "due_date": "2024-10-11",
+      "done_date": "",
+      "done": false
     },
     {
       "id": "2",
       "text": "할일2",
-      "done": true
+      "create_date": "2024-10-11",
+      "due_date": "2024-10-12",
+      "done_date": "",
+      "done": false
     },
     {
       "id": "3",
       "text": "할일3",
-      "done": false
-    },
-    {
-      "id": "4",
-      "text": "할일4",
-      "done": false
-    },
-    {
-      "id": "c1fd",
-      "text": "할일5",
+      "create_date": "2024-10-12",
+      "due_date": "2024-10-13",
+      "done_date": "",
       "done": false
     }
   ]
