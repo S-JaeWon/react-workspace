@@ -1,0 +1,36 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "text": "할일1",
+      "create_date": "2024-10-10",
+      "due_date": "2024-10-22",
+      "done_date": "2024-10-16",
+      "done": false
+    },
+    {
+      "id": "2",
+      "text": "할일2",
+      "create_date": "2024-10-11",
+      "due_date": "2024-10-15",
+      "done_date": "",
+      "done": false
+    },
+    {
+      "id": "3",
+      "text": "할일3",
+      "create_date": "2024-10-12",
+      "due_date": "2024-10-17",
+      "done_date": "2024-10-15",
+      "done": true
+    },
+    {
+      "id": "4",
+      "text": "할일4",
+      "create_date": "2024-10-12",
+      "due_date": "2024-10-17",
+      "done_date": "2024-10-15",
+      "done": false
+    }
+  ]
+}
