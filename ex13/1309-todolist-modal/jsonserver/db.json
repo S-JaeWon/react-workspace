@@ -2,9 +2,9 @@
   "todos": [
     {
       "id": "1",
-      "text": "할일1",
+      "text": "할일1-new",
       "create_date": "2024-10-10",
-      "due_date": "",
+      "due_date": "2024-10-22",
       "done_date": "2024-10-16",
       "done": true
     },
@@ -37,6 +37,14 @@
       "text": "할일5",
       "create_date": "2024-10-17",
       "due_date": "2024-10-25",
+      "done_date": "",
+      "done": false
+    },
+    {
+      "id": "4de4",
+      "text": "할일6-new",
+      "create_date": "2024-10-18",
+      "due_date": "2024-10-22",
       "done_date": "",
       "done": false
     }
