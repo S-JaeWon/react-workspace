@@ -22,7 +22,7 @@ function InfinitePeople() {
     isError,
     error,
   } = useInfiniteQuery({
-    queryKey: ["sw-p"],
+    queryKey: ["sw-peole"],
     queryFn: ({ pageParem = API_URL }) => fetchUrl(pageParem),
     getNextPageParam: (lastPage) => lastPage.next || undefined,
   });
@@ -38,8 +38,9 @@ function InfinitePeople() {
 
   return (
     <div>
-      {isFetching && <div>Loading...</div>}
+      {isFetching && <div className="loading">Loading...</div>}
       <InfiniteScroll
+        initialLoad={false}
         loadMore={() => {
           if (!isFetching) {
             fetchNextPage();
@@ -59,7 +60,14 @@ function InfinitePeople() {
             } = person;
 
             return (
-              <div key={name}>
+              <div
+                key={name}
+                style={{
+                  border: "1px solid #000",
+                  padding: "20px",
+                  margin: "10px",
+                }}
+              >
                 <h3>{name}</h3>
                 <p>gender: {gender}</p>
                 <p>hair: {hairColor}</p>
