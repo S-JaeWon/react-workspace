@@ -1,6 +1,12 @@
+import DynamicClassExample from "./DynamicClassExample";
+
 function App() {
   return (
     <>
+      <DynamicClassExample />
+
+      <br />
+      <hr />
       {/* 1. backgroung-color, width, height, border */}
       <div className="bg-pink-500 w-64 h-64 border-black border-4 rounded-[50%]">
         Hello Tailwind!
