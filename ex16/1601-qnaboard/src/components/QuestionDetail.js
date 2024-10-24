@@ -1,5 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { fetchQuestionDetail } from "../services/api";
+import { useQuery } from "@tanstack/react-query";
 
 function QuestionDetail() {
   const location = useLocation();
@@ -7,45 +9,59 @@ function QuestionDetail() {
   // console.log(location); // -> object 안에 pathname 확인
   const questionId = location.pathname.split("/")[2];
 
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["posts", questionId],
+    queryFn: () => fetchQuestionDetail(questionId),
+    staleTime: 2000,
+  });
+
+  if (isLoading) {
+    return <h3>loading...</h3>;
+  }
+
+  if (isError) {
+    return <h3>error : {error.message}</h3>;
+  }
+
+  console.log(data);
+
   return (
     <div className="container mx-auto p-4">
       <div className="card bg-base-100 shadow-xl p-6 mb-4">
-        <h1 className="text-2xl font-bold mb-4">제목1</h1>
+        <h1 className="text-2xl font-bold mb-4">
+          [{data.id}] {data.subject}
+        </h1>
+        <label className="label">
+          <span className="label=text">작성자: {data.author?.email}</span>
+          <span className="label=text">
+            작성일: {new Date(data.createDate).toLocaleString()}
+          </span>
+        </label>
         <textarea
           className="textarea textarea-bordered w-full h-96"
           placeholder="Bio"
           readOnly
-          value="내용1"
+          value={data.content}
         ></textarea>
       </div>
       <div className="card bg-base-100 shadow-xl p-6">
         <h3 className="text-xl font-semibold mb-4">답변 목록</h3>
-        <div className="mb-4">
-          <label className="label">
-            <span className="label-text">작성자: 철수</span>
-            <span className="label-text">
-              작성일: {new Date().toLocaleString()}
-            </span>
-          </label>
-          <textarea
-            className="textarea textarea-bordered w-full h-20"
-            placeholder="Bio"
-            readOnly
-            value="답변1"
-          ></textarea>
-          <label className="label">
-            <span className="label-text">작성자: 철수</span>
-            <span className="label-text">
-              작성일: {new Date().toLocaleString()}
-            </span>
-          </label>
-          <textarea
-            className="textarea textarea-bordered w-full h-20"
-            placeholder="Bio"
-            readOnly
-            value="답변1"
-          ></textarea>
-        </div>
+        {data.answerList.map((answer) => (
+          <div className="mb-4">
+            <label className="label">
+              <span className="label-text">작성자: {answer.author.email}</span>
+              <span className="label-text">
+                작성일: {new Date(answer.createDate).toLocaleString()}
+              </span>
+            </label>
+            <textarea
+              className="textarea textarea-bordered w-full h-20"
+              placeholder="Bio"
+              readOnly
+              value={answer.content}
+            ></textarea>
+          </div>
+        ))}
       </div>
     </div>
   );
